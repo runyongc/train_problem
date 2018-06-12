@@ -6,4 +6,8 @@ class DirectedGraphTest < Minitest::Test
     assert_equal(1,1)
   end
 
+  def test_route_one_distance
+    assert_equal(9, find_distance(A, C))
+  end
+
 end
