@@ -1,13 +1,18 @@
 require "minitest/autorun"
-require_relative "directedgraph"
+require_relative "directedgraph.rb"
 class DirectedGraphTest < Minitest::Test
 
-  def test_one_equals_oneg
+  def setup
+    @test = DirectedGraph.new
+    @test.create_graph
+  end
+
+  def test_one_equals_one
     assert_equal(1,1)
   end
 
-  def test_route_one_distance
-    assert_equal(9, find_distance(A, C))
+  def test_route_one_path
+    path = ["A","B","C"]
+    assert_equal(path, @test.find_shortest_path("A","C"))
   end
-
 end

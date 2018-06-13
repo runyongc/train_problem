@@ -5,8 +5,11 @@
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$" />
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="RVM: ruby-2.5.0" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="minitest (v5.8.5, ruby-2.3.3-p222) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bundler (v1.16.2, RVM: ruby-2.5.0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="lazy_priority_queue (v0.1.1, RVM: ruby-2.5.0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rgl (v0.5.3, RVM: ruby-2.5.0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="stream (v0.5, RVM: ruby-2.5.0) [gem]" level="application" />
   </component>
 </module>
