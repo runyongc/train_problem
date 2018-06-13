@@ -15,4 +15,10 @@ class DirectedGraphTest < Minitest::Test
     path = ["A","B","C"]
     assert_equal(path, @test.find_shortest_path("A","C"))
   end
+
+  def test_route_two_path
+    path = ["A", "D"]
+    assert_equal(path, @test.find_shortest_path("A","D"))
+  end
+
 end
