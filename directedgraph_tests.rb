@@ -39,6 +39,12 @@ class DirectedGraphTest < Minitest::Test
     assert_equal(path, 13)
   end
 
+  def test_route_four_cost
+    path1 = ["A", "E", "B", "C", "D"]
+    path = @test.find_path_cost(path1)
+    assert_equal(path, 22)
+  end
+
 
 
 end
