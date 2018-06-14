@@ -34,6 +34,9 @@ class DirectedGraph
         return @totalcost
       else
         cost = (path[ndx] + path[ndx + 1])
+        if @weights.has_key?(cost.chars) == false
+          return "NO SUCH ROUTE"
+        end
         @totalcost = @totalcost + @weights[cost.chars]
       end
     end
