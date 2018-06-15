@@ -59,5 +59,8 @@ class DirectedGraphTest < Minitest::Test
     assert_equal(3, @test.startGetAllPaths("A", "C", 4))
   end
 
+  def test_route_eight_shortest_trips
+    assert_equal(9, @test.find_shortest_path("A","C"))
+  end
 
 end
