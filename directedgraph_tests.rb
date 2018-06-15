@@ -55,4 +55,9 @@ class DirectedGraphTest < Minitest::Test
     assert_equal(@test.startGetAllPaths("C", "C", 3), 2)
   end
 
+  def test_route_seven_max_trips
+    assert_equal(3, @test.startGetAllPaths("A", "C", 4))
+  end
+
+
 end
