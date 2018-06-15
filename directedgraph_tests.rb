@@ -60,7 +60,8 @@ class DirectedGraphTest < Minitest::Test
   end
 
   def test_route_eight_shortest_trips
-    assert_equal(9, @test.find_shortest_path("A","C"))
+    path = @test.find_shortest_path("A", "C")
+    assert_equal(9, @test.find_path_cost(path))
   end
 
 end
