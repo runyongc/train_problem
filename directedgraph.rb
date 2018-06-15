@@ -1,7 +1,10 @@
 require 'rgl/adjacency'
 require 'rgl/dijkstra'
+require 'rgl/traversal'
+
 
 class DirectedGraph
+  attr_accessor :graph, :allpaths
 
   def initialize
     @weights = {
@@ -15,12 +18,26 @@ class DirectedGraph
         ["E","B"] => 3,
         ["A","E"] => 7
     }
+    @allpathsgraph = Hash.new {|hash, key| hash[key] = []}
+    @allpaths = []
+  end
+
+  def addEdge(a, b)
+    @allpathsgraph[a] << b
   end
 
   def create_graph
     @graph = RGL::DirectedAdjacencyGraph.new
-    @graph.add_vertices("A","B","C","D")
     @weights.each { |(vertice1, vertice2), weight| @graph.add_edge(vertice1, vertice2) }
+    addEdge('A','B')
+    addEdge('B','C')
+    addEdge('C','D')
+    addEdge('D','C')
+    addEdge('D','E')
+    addEdge('A','D')
+    addEdge('C','E')
+    addEdge('E','B')
+    addEdge('A','E')
   end
 
   def find_shortest_path(source, target)
@@ -41,4 +58,35 @@ class DirectedGraph
       end
     end
   end
+
+  def getAllPaths(u, d, visited, path, pathdepth = 1)
+    visited[u] = true if u != d
+    path = path + [u]
+
+    if u == d && pathdepth > 1
+      @allpaths << [path]
+    else
+      @allpathsgraph[u].each do |i|
+        if visited[i] == false
+          getAllPaths(i, d, visited, path, pathdepth + 1)
+          path.pop() if u != d
+          visited[u] = false
+        end
+      end
+    end
+  end
+
+  def startGetAllPaths(s, d, maxpathlength)
+    visited = Hash.new(false)
+    path = []
+    totalpaths = []
+    getAllPaths(s, d, visited, path)
+    allpaths.uniq.each do |v|
+      if v[0].length <= maxpathlength + 1
+        totalpaths << v
+      end
+    end
+    totalpaths.length
+  end
+
 end
