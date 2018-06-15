@@ -8,21 +8,21 @@ class DirectedGraphTest < Minitest::Test
   end
 
   def test_one_equals_one
-    assert_equal(1,1)
+    assert_equal(1, 1)
   end
 
   def test_route_one_shortest_path
-    path = ["A","B","C"]
-    assert_equal(path, @test.find_shortest_path("A","C"))
+    path = ["A", "B", "C"]
+    assert_equal(path, @test.find_shortest_path("A", "C"))
   end
 
   def test_route_two_shortest_path
     path = ["A", "D"]
-    assert_equal(path, @test.find_shortest_path("A","D"))
+    assert_equal(path, @test.find_shortest_path("A", "D"))
   end
 
   def test_route_one_cost
-    path1 = ["A","B","C"]
+    path1 = ["A", "B", "C"]
     path = @test.find_path_cost(path1)
     assert_equal(path, 9)
   end
@@ -64,4 +64,11 @@ class DirectedGraphTest < Minitest::Test
     assert_equal(9, @test.find_path_cost(path))
   end
 
+  def test_route_nine_shortest_trips
+    path = @test.find_shortest_path("B", "C")
+    path2 = @test.find_shortest_path("C", "B")
+    path2[0] = nil
+    mainpath = path + path2.compact
+    assert_equal(9, @test.find_path_cost(mainpath))
+  end
 end
